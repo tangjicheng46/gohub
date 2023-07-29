@@ -1,6 +1,6 @@
 module gohub
 
-go 1.19
+go 1.20
 
 require (
 	github.com/KenmyZhang/aliyun-communicate v0.0.0-20180308134849-7997edc57454
