@@ -26,3 +26,7 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+
+    - name: golang-govulncheck-action
+      uses: golang/govulncheck-action@v1
+
