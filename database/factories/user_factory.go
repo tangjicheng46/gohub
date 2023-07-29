@@ -5,7 +5,7 @@ import (
 	"gohub/app/models/user"
 	"gohub/pkg/helpers"
 
-	"github.com/bxcodec/faker/v3"
+	"github.com/go-faker/faker/v4"
 )
 
 func MakeUsers(times int) []user.User {

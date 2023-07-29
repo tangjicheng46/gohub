@@ -3,7 +3,7 @@ package factories
 import (
 	"gohub/app/models/topic"
 
-	"github.com/bxcodec/faker/v3"
+	"github.com/go-faker/faker/v4"
 )
 
 func MakeTopics(count int) []topic.Topic {

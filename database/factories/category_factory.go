@@ -3,7 +3,7 @@ package factories
 import (
 	"gohub/app/models/category"
 
-	"github.com/bxcodec/faker/v3"
+	"github.com/go-faker/faker/v4"
 )
 
 func MakeCategories(count int) []category.Category {

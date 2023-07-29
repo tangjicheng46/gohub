@@ -4,7 +4,7 @@ import (
     "gohub/app/models/{{PackageName}}"
     "gohub/pkg/helpers"
 
-    "github.com/bxcodec/faker/v3"
+    "github.com/go-faker/faker/v4"
 )
 
 func Make{{StructNamePlural}}(count int) []{{PackageName}}.{{StructName}} {
