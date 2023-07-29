@@ -1,6 +1,6 @@
 # gohub
 
-
+fork from https://github.com/summerblue/gohub 
 
 
 本项目是 [《G02 Go API 实战》](https://learnku.com/courses/go-api/) 实战课程的源码，基于 MIT 协议开源。
