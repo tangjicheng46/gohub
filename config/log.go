@@ -3,8 +3,8 @@ package config
 import "gohub/pkg/config"
 
 func init() {
-	config.Add("log", func() map[string]interface{} {
-		return map[string]interface{}{
+	config.Add("log", func() map[string]any {
+		return map[string]any{
 
 			// 日志级别，必须是以下这些选项：
 			// "debug" —— 信息量大，一般调试时打开。系统模块详细运行的日志，例如 HTTP 请求、数据库请求、发送邮件、发送短信

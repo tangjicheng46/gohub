@@ -15,7 +15,7 @@ type VerifyCodePhoneRequest struct {
 }
 
 // VerifyCodePhone 验证表单，返回长度等于零即通过
-func VerifyCodePhone(data interface{}, c *gin.Context) map[string][]string {
+func VerifyCodePhone(data any, c *gin.Context) map[string][]string {
 
 	// 1. 定制认证规则
 	rules := govalidator.MapData{
@@ -56,7 +56,7 @@ type VerifyCodeEmailRequest struct {
 }
 
 // VerifyCodeEmail 验证表单，返回长度等于零即通过
-func VerifyCodeEmail(data interface{}, c *gin.Context) map[string][]string {
+func VerifyCodeEmail(data any, c *gin.Context) map[string][]string {
 
 	// 1. 定制认证规则
 	rules := govalidator.MapData{

@@ -112,7 +112,7 @@ func getLogWriter(filename string, maxSize, maxBackup, maxAge int, compress bool
 //
 //	logger.Dump(user.User{Name:"test"})
 //	logger.Dump(user.User{Name:"test"}, "用户信息")
-func Dump(value interface{}, msg ...string) {
+func Dump(value any, msg ...string) {
 	valueString := jsonString(value)
 	// 判断第二个参数是否传参 msg
 	if len(msg) > 0 {
@@ -197,27 +197,27 @@ func FatalString(moduleName, name, msg string) {
 // DebugJSON 记录对象类型的 debug 日志，使用 json.Marshal 进行编码。调用示例：
 //
 //	logger.DebugJSON("Auth", "读取登录用户", auth.CurrentUser())
-func DebugJSON(moduleName, name string, value interface{}) {
+func DebugJSON(moduleName, name string, value any) {
 	Logger.Debug(moduleName, zap.String(name, jsonString(value)))
 }
 
-func InfoJSON(moduleName, name string, value interface{}) {
+func InfoJSON(moduleName, name string, value any) {
 	Logger.Info(moduleName, zap.String(name, jsonString(value)))
 }
 
-func WarnJSON(moduleName, name string, value interface{}) {
+func WarnJSON(moduleName, name string, value any) {
 	Logger.Warn(moduleName, zap.String(name, jsonString(value)))
 }
 
-func ErrorJSON(moduleName, name string, value interface{}) {
+func ErrorJSON(moduleName, name string, value any) {
 	Logger.Error(moduleName, zap.String(name, jsonString(value)))
 }
 
-func FatalJSON(moduleName, name string, value interface{}) {
+func FatalJSON(moduleName, name string, value any) {
 	Logger.Fatal(moduleName, zap.String(name, jsonString(value)))
 }
 
-func jsonString(value interface{}) string {
+func jsonString(value any) string {
 	b, err := json.Marshal(value)
 	if err != nil {
 		Logger.Error("Logger", zap.String("JSON marshal error", err.Error()))

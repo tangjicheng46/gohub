@@ -14,7 +14,7 @@ type ResetByPhoneRequest struct {
 }
 
 // ResetByPhone 验证表单，返回长度等于零即通过
-func ResetByPhone(data interface{}, c *gin.Context) map[string][]string {
+func ResetByPhone(data any, c *gin.Context) map[string][]string {
 
 	rules := govalidator.MapData{
 		"phone":       []string{"required", "digits:11"},
@@ -52,7 +52,7 @@ type ResetByEmailRequest struct {
 }
 
 // ResetByEmail 验证表单，返回长度等于零即通过
-func ResetByEmail(data interface{}, c *gin.Context) map[string][]string {
+func ResetByEmail(data any, c *gin.Context) map[string][]string {
 
 	rules := govalidator.MapData{
 		"email":       []string{"required", "min:4", "max:30", "email"},

@@ -11,7 +11,7 @@ type PaginationRequest struct {
 	PerPage string `valid:"per_page" form:"per_page"`
 }
 
-func Pagination(data interface{}, c *gin.Context) map[string][]string {
+func Pagination(data any, c *gin.Context) map[string][]string {
 
 	rules := govalidator.MapData{
 		"sort":     []string{"in:id,created_at,updated_at"},

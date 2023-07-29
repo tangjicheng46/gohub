@@ -56,7 +56,7 @@ type Paginator struct {
 //	       app.APIURL(database.TableName(&Topic{})),
 //	       perPage,
 //	   )
-func Paginate(c *gin.Context, db *gorm.DB, data interface{}, baseURL string, perPage int) Paging {
+func Paginate(c *gin.Context, db *gorm.DB, data any, baseURL string, perPage int) Paging {
 
 	// 初始化 Paginator 实例
 	p := &Paginator{

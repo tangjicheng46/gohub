@@ -3,8 +3,8 @@ package config
 import "gohub/pkg/config"
 
 func init() {
-	config.Add("verifycode", func() map[string]interface{} {
-		return map[string]interface{}{
+	config.Add("verifycode", func() map[string]any {
+		return map[string]any{
 
 			// 验证码的长度
 			"code_length": config.Env("VERIFY_CODE_LENGTH", 6),

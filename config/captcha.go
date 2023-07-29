@@ -3,8 +3,8 @@ package config
 import "gohub/pkg/config"
 
 func init() {
-	config.Add("captcha", func() map[string]interface{} {
-		return map[string]interface{}{
+	config.Add("captcha", func() map[string]any {
+		return map[string]any{
 
 			// 验证码图片高度
 			"height": 80,

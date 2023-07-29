@@ -59,7 +59,7 @@ func (rds RedisClient) Ping() error {
 }
 
 // Set 存储 key 对应的 value，且设置 expiration 过期时间
-func (rds RedisClient) Set(key string, value interface{}, expiration time.Duration) bool {
+func (rds RedisClient) Set(key string, value any, expiration time.Duration) bool {
 	if err := rds.Client.Set(rds.Context, key, value, expiration).Err(); err != nil {
 		logger.ErrorString("Redis", "Set", err.Error())
 		return false
@@ -111,7 +111,7 @@ func (rds RedisClient) FlushDB() bool {
 
 // Increment 当参数只有 1 个时，为 key，其值增加 1。
 // 当参数有 2 个时，第一个参数为 key ，第二个参数为要增加的值 int64 类型。
-func (rds RedisClient) Increment(parameters ...interface{}) bool {
+func (rds RedisClient) Increment(parameters ...any) bool {
 	switch len(parameters) {
 	case 1:
 		key := parameters[0].(string)
@@ -135,7 +135,7 @@ func (rds RedisClient) Increment(parameters ...interface{}) bool {
 
 // Decrement 当参数只有 1 个时，为 key，其值减去 1。
 // 当参数有 2 个时，第一个参数为 key ，第二个参数为要减去的值 int64 类型。
-func (rds RedisClient) Decrement(parameters ...interface{}) bool {
+func (rds RedisClient) Decrement(parameters ...any) bool {
 	switch len(parameters) {
 	case 1:
 		key := parameters[0].(string)

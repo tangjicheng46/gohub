@@ -15,7 +15,7 @@ type UserUpdateProfileRequest struct {
 	Introduction string `valid:"introduction" json:"introduction"`
 }
 
-func UserUpdateProfile(data interface{}, c *gin.Context) map[string][]string {
+func UserUpdateProfile(data any, c *gin.Context) map[string][]string {
 
 	// 查询用户名重复时，过滤掉当前用户 ID
 	uid := auth.CurrentUID(c)
@@ -49,7 +49,7 @@ type UserUpdateEmailRequest struct {
 	VerifyCode string `json:"verify_code,omitempty" valid:"verify_code"`
 }
 
-func UserUpdateEmail(data interface{}, c *gin.Context) map[string][]string {
+func UserUpdateEmail(data any, c *gin.Context) map[string][]string {
 
 	currentUser := auth.CurrentUser(c)
 	rules := govalidator.MapData{
@@ -89,7 +89,7 @@ type UserUpdatePhoneRequest struct {
 	VerifyCode string `json:"verify_code,omitempty" valid:"verify_code"`
 }
 
-func UserUpdatePhone(data interface{}, c *gin.Context) map[string][]string {
+func UserUpdatePhone(data any, c *gin.Context) map[string][]string {
 
 	currentUser := auth.CurrentUser(c)
 
@@ -128,7 +128,7 @@ type UserUpdatePasswordRequest struct {
 	NewPasswordConfirm string `valid:"new_password_confirm" json:"new_password_confirm,omitempty"`
 }
 
-func UserUpdatePassword(data interface{}, c *gin.Context) map[string][]string {
+func UserUpdatePassword(data any, c *gin.Context) map[string][]string {
 	rules := govalidator.MapData{
 		"password":             []string{"required", "min:6"},
 		"new_password":         []string{"required", "min:6"},
@@ -161,7 +161,7 @@ type UserUpdateAvatarRequest struct {
 	Avatar *multipart.FileHeader `valid:"avatar" form:"avatar"`
 }
 
-func UserUpdateAvatar(data interface{}, c *gin.Context) map[string][]string {
+func UserUpdateAvatar(data any, c *gin.Context) map[string][]string {
 
 	rules := govalidator.MapData{
 		// size 的单位为 bytes

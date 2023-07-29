@@ -25,15 +25,15 @@ func InitWithCacheStore(store Store) {
 	})
 }
 
-func Set(key string, obj interface{}, expireTime time.Duration) {
+func Set(key string, obj any, expireTime time.Duration) {
 	b, err := json.Marshal(&obj)
 	logger.LogIf(err)
 	Cache.Store.Set(key, string(b), expireTime)
 }
 
-func Get(key string) interface{} {
+func Get(key string) any {
 	stringValue := Cache.Store.Get(key)
-	var wanted interface{}
+	var wanted any
 	err := json.Unmarshal([]byte(stringValue), &wanted)
 	logger.LogIf(err)
 	return wanted
@@ -47,7 +47,7 @@ func Has(key string) bool {
 //
 //	model := user.User{}
 //	cache.GetObject("key", &model)
-func GetObject(key string, wanted interface{}) {
+func GetObject(key string, wanted any) {
 	val := Cache.Store.Get(key)
 	if len(val) > 0 {
 		err := json.Unmarshal([]byte(val), &wanted)
@@ -107,7 +107,7 @@ func GetStringSlice(key string) []string {
 	return cast.ToStringSlice(Get(key))
 }
 
-func GetStringMap(key string) map[string]interface{} {
+func GetStringMap(key string) map[string]any {
 	return cast.ToStringMap(Get(key))
 }
 
@@ -131,11 +131,11 @@ func Flush() {
 	Cache.Store.Flush()
 }
 
-func Increment(parameters ...interface{}) {
+func Increment(parameters ...any) {
 	Cache.Store.Increment(parameters...)
 }
 
-func Decrement(parameters ...interface{}) {
+func Decrement(parameters ...any) {
 	Cache.Store.Decrement(parameters...)
 }
 

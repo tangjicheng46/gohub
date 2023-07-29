@@ -6,13 +6,13 @@ import (
 
 func init() {
 
-	config.Add("database", func() map[string]interface{} {
-		return map[string]interface{}{
+	config.Add("database", func() map[string]any {
+		return map[string]any{
 
 			// 默认数据库
 			"connection": config.Env("DB_CONNECTION", "mysql"),
 
-			"mysql": map[string]interface{}{
+			"mysql": map[string]any{
 
 				// 数据库连接信息
 				"host":     config.Env("DB_HOST", "127.0.0.1"),
@@ -28,7 +28,7 @@ func init() {
 				"max_life_seconds":     config.Env("DB_MAX_LIFE_SECONDS", 5*60),
 			},
 
-			"sqlite": map[string]interface{}{
+			"sqlite": map[string]any{
 				"database": config.Env("DB_SQL_FILE", "database/database.db"),
 			},
 		}

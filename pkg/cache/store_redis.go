@@ -43,11 +43,11 @@ func (s *RedisStore) Flush() {
 	s.RedisClient.FlushDB()
 }
 
-func (s *RedisStore) Increment(parameters ...interface{}) {
+func (s *RedisStore) Increment(parameters ...any) {
 	s.RedisClient.Increment(parameters...)
 }
 
-func (s *RedisStore) Decrement(parameters ...interface{}) {
+func (s *RedisStore) Decrement(parameters ...any) {
 	s.RedisClient.Decrement(parameters...)
 }
 

@@ -41,17 +41,17 @@ func (l GormLogger) LogMode(level gormlogger.LogLevel) gormlogger.Interface {
 }
 
 // Info 实现 gormlogger.Interface 的 Info 方法
-func (l GormLogger) Info(ctx context.Context, str string, args ...interface{}) {
+func (l GormLogger) Info(ctx context.Context, str string, args ...any) {
 	l.logger().Sugar().Debugf(str, args...)
 }
 
 // Warn 实现 gormlogger.Interface 的 Warn 方法
-func (l GormLogger) Warn(ctx context.Context, str string, args ...interface{}) {
+func (l GormLogger) Warn(ctx context.Context, str string, args ...any) {
 	l.logger().Sugar().Warnf(str, args...)
 }
 
 // Error 实现 gormlogger.Interface 的 Error 方法
-func (l GormLogger) Error(ctx context.Context, str string, args ...interface{}) {
+func (l GormLogger) Error(ctx context.Context, str string, args ...any) {
 	l.logger().Sugar().Errorf(str, args...)
 }
 

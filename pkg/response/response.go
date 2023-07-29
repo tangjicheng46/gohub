@@ -10,7 +10,7 @@ import (
 )
 
 // JSON 响应 200 和 JSON 数据
-func JSON(c *gin.Context, data interface{}) {
+func JSON(c *gin.Context, data any) {
 	c.JSON(http.StatusOK, data)
 }
 
@@ -25,7 +25,7 @@ func Success(c *gin.Context) {
 
 // Data 响应 200 和带 data 键的 JSON 数据
 // 执行『更新操作』成功后调用，例如更新话题，成功后返回已更新的话题
-func Data(c *gin.Context, data interface{}) {
+func Data(c *gin.Context, data any) {
 	JSON(c, gin.H{
 		"success": true,
 		"data":    data,
@@ -34,7 +34,7 @@ func Data(c *gin.Context, data interface{}) {
 
 // Created 响应 201 和带 data 键的 JSON 数据
 // 执行『更新操作』成功后调用，例如更新话题，成功后返回已更新的话题
-func Created(c *gin.Context, data interface{}) {
+func Created(c *gin.Context, data any) {
 	c.JSON(http.StatusCreated, gin.H{
 		"success": true,
 		"data":    data,
@@ -42,7 +42,7 @@ func Created(c *gin.Context, data interface{}) {
 }
 
 // CreatedJSON 响应 201 和 JSON 数据
-func CreatedJSON(c *gin.Context, data interface{}) {
+func CreatedJSON(c *gin.Context, data any) {
 	c.JSON(http.StatusCreated, data)
 }
 

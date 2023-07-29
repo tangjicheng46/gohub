@@ -96,7 +96,7 @@ func makeModelFromString(name string) Model {
 
 // createFileFromStub 读取 stub 文件并进行变量替换
 // 最后一个选项可选，如若传参，应传 map[string]string 类型，作为附加的变量搜索替换
-func createFileFromStub(filePath string, stubName string, model Model, variables ...interface{}) {
+func createFileFromStub(filePath string, stubName string, model Model, variables ...any) {
 
 	// 实现最后一个参数可选
 	replaces := make(map[string]string)

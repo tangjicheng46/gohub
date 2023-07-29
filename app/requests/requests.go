@@ -9,14 +9,14 @@ import (
 )
 
 // ValidatorFunc 验证函数类型
-type ValidatorFunc func(interface{}, *gin.Context) map[string][]string
+type ValidatorFunc func(any, *gin.Context) map[string][]string
 
 // Validate 控制器里调用示例：
 //
 //	if ok := requests.Validate(c, &requests.UserSaveRequest{}, requests.UserSave); !ok {
 //	    return
 //	}
-func Validate(c *gin.Context, obj interface{}, handler ValidatorFunc) bool {
+func Validate(c *gin.Context, obj any, handler ValidatorFunc) bool {
 
 	// 1. 解析请求，支持 JSON 数据、表单请求和 URL Query
 	if err := c.ShouldBind(obj); err != nil {
@@ -36,7 +36,7 @@ func Validate(c *gin.Context, obj interface{}, handler ValidatorFunc) bool {
 	return true
 }
 
-func validate(data interface{}, rules govalidator.MapData, messages govalidator.MapData) map[string][]string {
+func validate(data any, rules govalidator.MapData, messages govalidator.MapData) map[string][]string {
 	// 配置选项
 	opts := govalidator.Options{
 		Data:          data,
@@ -48,7 +48,7 @@ func validate(data interface{}, rules govalidator.MapData, messages govalidator.
 	return govalidator.New(opts).ValidateStruct()
 }
 
-func validateFile(c *gin.Context, data interface{}, rules govalidator.MapData, messages govalidator.MapData) map[string][]string {
+func validateFile(c *gin.Context, data any, rules govalidator.MapData, messages govalidator.MapData) map[string][]string {
 	opts := govalidator.Options{
 		Request:       c.Request,
 		Rules:         rules,

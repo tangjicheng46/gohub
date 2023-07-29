@@ -3,8 +3,8 @@ package config
 import "gohub/pkg/config"
 
 func init() {
-	config.Add("jwt", func() map[string]interface{} {
-		return map[string]interface{}{
+	config.Add("jwt", func() map[string]any {
+		return map[string]any{
 
 			// 使用 config.GetString("app.key")
 			// "signing_key":

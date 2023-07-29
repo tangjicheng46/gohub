@@ -13,7 +13,7 @@ type LoginByPhoneRequest struct {
 }
 
 // LoginByPhone 验证表单，返回长度等于零即通过
-func LoginByPhone(data interface{}, c *gin.Context) map[string][]string {
+func LoginByPhone(data any, c *gin.Context) map[string][]string {
 
 	rules := govalidator.MapData{
 		"phone":       []string{"required", "digits:11"},
@@ -48,7 +48,7 @@ type LoginByPasswordRequest struct {
 }
 
 // LoginByPassword 验证表单，返回长度等于零即通过
-func LoginByPassword(data interface{}, c *gin.Context) map[string][]string {
+func LoginByPassword(data any, c *gin.Context) map[string][]string {
 
 	rules := govalidator.MapData{
 		"login_id":       []string{"required", "min:3"},

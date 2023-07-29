@@ -3,8 +3,8 @@ package config
 import "gohub/pkg/config"
 
 func init() {
-	config.Add("paging", func() map[string]interface{} {
-		return map[string]interface{}{
+	config.Add("paging", func() map[string]any {
+		return map[string]any{
 
 			// 默认每页条数
 			"perpage": 10,

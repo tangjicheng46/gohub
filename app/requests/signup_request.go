@@ -12,7 +12,7 @@ type SignupPhoneExistRequest struct {
 	Phone string `json:"phone,omitempty" valid:"phone"`
 }
 
-func SignupPhoneExist(data interface{}, c *gin.Context) map[string][]string {
+func SignupPhoneExist(data any, c *gin.Context) map[string][]string {
 	// 自定义验证规则
 	rules := govalidator.MapData{
 		"phone": []string{"required", "digits:11"},
@@ -31,7 +31,7 @@ type SignupEmailExistRequest struct {
 	Email string `json:"email,omitempty" valid:"email"`
 }
 
-func SignupEmailExist(data interface{}, c *gin.Context) map[string][]string {
+func SignupEmailExist(data any, c *gin.Context) map[string][]string {
 	// 自定义验证规则
 	rules := govalidator.MapData{
 		"email": []string{"required", "min:4", "max:30", "email"},
@@ -57,7 +57,7 @@ type SignupUsingPhoneRequest struct {
 	PasswordConfirm string `valid:"password_confirm" json:"password_confirm,omitempty"`
 }
 
-func SignupUsingPhone(data interface{}, c *gin.Context) map[string][]string {
+func SignupUsingPhone(data any, c *gin.Context) map[string][]string {
 
 	rules := govalidator.MapData{
 		"phone":            []string{"required", "digits:11", "not_exists:users,phone"},
@@ -108,7 +108,7 @@ type SignupUsingEmailRequest struct {
 	PasswordConfirm string `valid:"password_confirm" json:"password_confirm,omitempty"`
 }
 
-func SignupUsingEmail(data interface{}, c *gin.Context) map[string][]string {
+func SignupUsingEmail(data any, c *gin.Context) map[string][]string {
 
 	rules := govalidator.MapData{
 		"email":            []string{"required", "min:4", "max:30", "email", "not_exists:users,email"},

@@ -175,7 +175,7 @@ func (jwt *JWT) expireAtTime() int64 {
 
 // parseTokenString 使用 jwtpkg.ParseWithClaims 解析 Token
 func (jwt *JWT) parseTokenString(tokenString string) (*jwtpkg.Token, error) {
-	return jwtpkg.ParseWithClaims(tokenString, &JWTCustomClaims{}, func(token *jwtpkg.Token) (interface{}, error) {
+	return jwtpkg.ParseWithClaims(tokenString, &JWTCustomClaims{}, func(token *jwtpkg.Token) (any, error) {
 		return jwt.SignKey, nil
 	})
 }

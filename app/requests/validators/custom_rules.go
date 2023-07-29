@@ -20,7 +20,7 @@ func init() {
 	// not_exists 参数可以有两种，一种是 2 个参数，一种是 3 个参数：
 	// not_exists:users,email 检查数据库表里是否存在同一条信息
 	// not_exists:users,email,32 排除用户掉 id 为 32 的用户
-	govalidator.AddCustomRule("not_exists", func(field string, rule string, message string, value interface{}) error {
+	govalidator.AddCustomRule("not_exists", func(field string, rule string, message string, value any) error {
 		rng := strings.Split(strings.TrimPrefix(rule, "not_exists:"), ",")
 
 		// 第一个参数，表名称，如 users
@@ -63,7 +63,7 @@ func init() {
 	})
 
 	// max_cn:8 中文长度设定不超过 8
-	govalidator.AddCustomRule("max_cn", func(field string, rule string, message string, value interface{}) error {
+	govalidator.AddCustomRule("max_cn", func(field string, rule string, message string, value any) error {
 		valLength := utf8.RuneCountInString(value.(string))
 		l, _ := strconv.Atoi(strings.TrimPrefix(rule, "max_cn:"))
 		if valLength > l {
@@ -77,7 +77,7 @@ func init() {
 	})
 
 	// min_cn:2 中文长度设定不小于 2
-	govalidator.AddCustomRule("min_cn", func(field string, rule string, message string, value interface{}) error {
+	govalidator.AddCustomRule("min_cn", func(field string, rule string, message string, value any) error {
 		valLength := utf8.RuneCountInString(value.(string))
 		l, _ := strconv.Atoi(strings.TrimPrefix(rule, "min_cn:"))
 		if valLength < l {
@@ -94,7 +94,7 @@ func init() {
 	// 一个使用场景是创建话题时需要附带 category_id 分类 ID 为参数，此时需要保证
 	// category_id 的值在数据库中存在，即可使用：
 	// exists:categories,id
-	govalidator.AddCustomRule("exists", func(field string, rule string, message string, value interface{}) error {
+	govalidator.AddCustomRule("exists", func(field string, rule string, message string, value any) error {
 		rng := strings.Split(strings.TrimPrefix(rule, "exists:"), ",")
 
 		// 第一个参数，表名称，如 categories

@@ -6,8 +6,8 @@ import (
 
 func init() {
 
-	config.Add("redis", func() map[string]interface{} {
-		return map[string]interface{}{
+	config.Add("redis", func() map[string]any {
+		return map[string]any{
 
 			"host":     config.Env("REDIS_HOST", "127.0.0.1"),
 			"port":     config.Env("REDIS_PORT", "6379"),
